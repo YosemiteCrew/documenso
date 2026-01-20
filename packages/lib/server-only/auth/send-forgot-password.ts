@@ -57,7 +57,7 @@ export const sendForgotPassword = async ({ userId }: SendForgotPasswordOptions) 
     },
     from: {
       name: env('NEXT_PRIVATE_SMTP_FROM_NAME') || 'Yosemite Crew',
-      address: env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'noreply@yosemitecrew.com',
+      address: env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'support@yosemitecrew.com',
     },
     subject: i18n._(msg`Forgot Password?`),
     html,

@@ -39,7 +39,7 @@ export const sendResetPassword = async ({ userId }: SendResetPasswordOptions) =>
     },
     from: {
       name: env('NEXT_PRIVATE_SMTP_FROM_NAME') || 'Yosemite Crew',
-      address: env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'noreply@yosemitecrew.com',
+      address: env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'support@yosemitecrew.com',
     },
     subject: 'Password Reset Success!',
     html,

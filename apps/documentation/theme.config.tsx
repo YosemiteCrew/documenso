@@ -50,8 +50,8 @@ const themeConfig: DocsThemeConfig = {
     content: (
       <span>
         {new Date().getFullYear()} ©{' '}
-        <a href="https://documen.so" target="_blank">
-          Documenso
+        <a href="https://www.yosemitecrew.com" target="_blank">
+          DuneXploration
         </a>
         .
       </span>

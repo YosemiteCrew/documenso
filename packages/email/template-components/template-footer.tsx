@@ -39,7 +39,13 @@ export const TemplateFooter = ({ isDocument = true }: TemplateFooterProps) => {
 
       {!branding.brandingEnabled && (
         <Text className="my-8 text-sm text-slate-400">
-          Yosemite Crew
+          © {new Date().getFullYear()} DuneXploration
+          <br />
+          DuneXploration UG (haftungsbeschränkt), Am Finther Weg 7, 55127 Mainz
+          <br />
+          Email: support@yosemitecrew.com | Phone: +49 152 277 63275
+          <br />
+          Geschäftsführer: Ankit Upadhyay | Amtsgericht Mainz unter HRB 52778 | VAT: DE367920596
         </Text>
       )}
     </Section>
