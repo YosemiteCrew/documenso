@@ -33,8 +33,8 @@ export const TemplateFooter = ({ isDocument = true, reportUrl }: TemplateFooterP
         <Text className="my-4 text-base text-muted-foreground">
           <Trans>
             This document was sent using{' '}
-            <Link className="text-primary" href="https://documen.so/mail-footer">
-              Documenso
+            <Link className="text-[#247AED]" href="/">
+              Yosemite Crew
             </Link>
             .
           </Trans>
@@ -63,10 +63,8 @@ export const TemplateFooter = ({ isDocument = true, reportUrl }: TemplateFooterP
       )}
 
       {!branding.brandingEnabled && (
-        <Text className="my-8 text-muted-foreground text-sm">
-          Documenso, Inc.
-          <br />
-          2261 Market Street, #5211, San Francisco, CA 94114, USA
+        <Text className="my-8 text-sm text-slate-400">
+          Yosemite Crew
         </Text>
       )}
     </Section>

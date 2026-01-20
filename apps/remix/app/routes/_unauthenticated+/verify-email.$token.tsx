@@ -141,8 +141,11 @@ export default function VerifyEmailPage({ loaderData }: Route.ComponentProps) {
               <Trans>Email Confirmed!</Trans>
             </h2>
 
-            <p className="mt-4 text-muted-foreground">
-              <Trans>Your email has been successfully confirmed! You can now use all features of Documenso.</Trans>
+            <p className="text-muted-foreground mt-4">
+              <Trans>
+                Your email has been successfully confirmed! You can now use all features of
+                Yosemite Crew.
+              </Trans>
             </p>
 
             <Button className="mt-4" asChild>
@@ -166,8 +169,10 @@ export default function VerifyEmailPage({ loaderData }: Route.ComponentProps) {
               <Trans>Email already confirmed</Trans>
             </h2>
 
-            <p className="mt-4 text-muted-foreground">
-              <Trans>Your email has already been confirmed. You can now use all features of Documenso.</Trans>
+            <p className="text-muted-foreground mt-4">
+              <Trans>
+                Your email has already been confirmed. You can now use all features of Yosemite Crew.
+              </Trans>
             </p>
 
             <Button className="mt-4" asChild>
