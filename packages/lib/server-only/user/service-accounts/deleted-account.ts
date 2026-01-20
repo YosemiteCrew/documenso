@@ -21,7 +21,7 @@ export const deletedServiceAccountEmail = () => {
 export const deletedAccountServiceAccount = async () => {
   const serviceAccount = await prisma.user.findFirst({
     where: {
-      email: 'deleted-account@yosemitecrew.com',
+      email: 'support@yosemitecrew.com',
     },
     select: {
       id: true,
