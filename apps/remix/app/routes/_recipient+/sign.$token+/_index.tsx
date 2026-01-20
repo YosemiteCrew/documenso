@@ -368,10 +368,10 @@ const SigningPageV1 = ({ data }: { data: Awaited<ReturnType<typeof handleV1Loade
               <Trans>
                 Want to send slick signing links like this one?{' '}
                 <Link
-                  to="https://documenso.com"
+                  to="/"
                   className="text-documenso-700 hover:text-documenso-600"
                 >
-                  Check out Documenso
+                  Check out Yosemite Crew
                 </Link>
                 .
               </Trans>
@@ -468,10 +468,10 @@ const SigningPageV2 = ({ data }: { data: Awaited<ReturnType<typeof handleV2Loade
               <Trans>
                 Want to send slick signing links like this one?{' '}
                 <Link
-                  to="https://documenso.com"
+                  to="/"
                   className="text-documenso-700 hover:text-documenso-600"
                 >
-                  Check out Documenso
+                  Check out Yosemite Crew
                 </Link>
                 .
               </Trans>

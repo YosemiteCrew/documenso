@@ -1,14 +1,14 @@
 import { env } from '../utils/env';
 
-export const FROM_ADDRESS = env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'noreply@documenso.com';
-export const FROM_NAME = env('NEXT_PRIVATE_SMTP_FROM_NAME') || 'Documenso';
+export const FROM_ADDRESS = env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'noreply@yosemitecrew.com';
+export const FROM_NAME = env('NEXT_PRIVATE_SMTP_FROM_NAME') || 'Yosemite Crew';
 
 export const DOCUMENSO_INTERNAL_EMAIL = {
   name: FROM_NAME,
   address: FROM_ADDRESS,
 };
 
-export const SERVICE_USER_EMAIL = 'serviceaccount@documenso.com';
+export const SERVICE_USER_EMAIL = 'serviceaccount@yosemitecrew.com';
 
 export const EMAIL_VERIFICATION_STATE = {
   NOT_FOUND: 'NOT_FOUND',
