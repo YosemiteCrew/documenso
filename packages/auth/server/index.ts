@@ -10,6 +10,7 @@ import { setCsrfCookie } from './lib/session/session-cookies';
 import { accountRoute } from './routes/account';
 import { callbackRoute } from './routes/callback';
 import { emailPasswordRoute } from './routes/email-password';
+import { externalRoute } from './routes/external';
 import { oauthRoute } from './routes/oauth';
 import { passkeyRoute } from './routes/passkey';
 import { sessionRoute } from './routes/session';
@@ -45,6 +46,7 @@ export const auth = new Hono<HonoAuthContext>()
   .route('/', sessionRoute)
   .route('/', signOutRoute)
   .route('/', accountRoute)
+  .route('/external', externalRoute)
   .route('/callback', callbackRoute)
   .route('/oauth', oauthRoute)
   .route('/email-password', emailPasswordRoute)

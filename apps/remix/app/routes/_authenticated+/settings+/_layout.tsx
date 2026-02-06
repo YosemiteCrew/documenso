@@ -1,12 +1,27 @@
 import { Trans } from '@lingui/react/macro';
-import { Outlet } from 'react-router';
+import { IdentityProvider } from '@prisma/client';
+import { Outlet, redirect } from 'react-router';
+
+import { getOptionalSession } from '@documenso/auth/server/lib/utils/get-session';
 
 import { SettingsDesktopNav } from '~/components/general/settings-nav-desktop';
 import { SettingsMobileNav } from '~/components/general/settings-nav-mobile';
 import { appMetaTags } from '~/utils/meta';
 
+import type { Route } from './+types/_layout';
+
 export function meta() {
   return appMetaTags('Settings');
+}
+
+export async function loader({ request }: Route.LoaderArgs) {
+  const { user } = await getOptionalSession(request);
+
+  if (user?.identityProvider === IdentityProvider.EXTERNAL) {
+    throw redirect('/');
+  }
+
+  return {};
 }
 
 export default function SettingsLayout() {

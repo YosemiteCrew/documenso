@@ -20,6 +20,7 @@ export type SessionUser = Pick<
   | 'email'
   | 'emailVerified'
   | 'avatarImageId'
+  | 'identityProvider'
   | 'twoFactorEnabled'
   | 'roles'
   | 'signature'
@@ -95,6 +96,7 @@ export const validateSessionToken = async (token: string): Promise<SessionValida
           email: true,
           emailVerified: true,
           avatarImageId: true,
+          identityProvider: true,
           twoFactorEnabled: true,
           roles: true,
           signature: true,

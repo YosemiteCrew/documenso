@@ -29,6 +29,7 @@ enum IdentityProvider {
   DOCUMENSO
   GOOGLE
   OIDC
+  EXTERNAL
 }
 
 enum Role {
