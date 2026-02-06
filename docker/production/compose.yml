@@ -16,7 +16,7 @@ services:
       - database:/var/lib/postgresql/data
 
   documenso:
-    image: documenso/documenso:latest
+    image: yosemite-documenso:yc-1.0.0
     depends_on:
       database:
         condition: service_healthy

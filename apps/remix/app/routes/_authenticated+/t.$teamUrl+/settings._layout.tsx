@@ -12,7 +12,9 @@ import {
 import { Link, NavLink, Outlet, redirect } from 'react-router';
 
 import { getSession } from '@documenso/auth/server/lib/utils/get-session';
+import { useSession } from '@documenso/lib/client-only/providers/session';
 import { getTeamByUrl } from '@documenso/lib/server-only/team/get-team';
+import { isExternalUser } from '@documenso/lib/utils/is-external-user';
 import { canExecuteTeamAction } from '@documenso/lib/utils/teams';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
@@ -48,6 +50,9 @@ export default function TeamsSettingsLayout() {
   const { t } = useLingui();
 
   const team = useCurrentTeam();
+  const { user } = useSession();
+
+  const isExternal = isExternalUser(user);
 
   const teamSettingRoutes = [
     {
@@ -103,6 +108,16 @@ export default function TeamsSettingsLayout() {
     },
   ];
 
+  let visibleTeamSettingRoutes = teamSettingRoutes;
+
+  if (isExternal) {
+    visibleTeamSettingRoutes = teamSettingRoutes.filter(
+      (route) =>
+        route.path !== `/t/${team.url}/settings/tokens` &&
+        route.path !== `/t/${team.url}/settings/webhooks`,
+    );
+  }
+
   if (!canExecuteTeamAction('MANAGE_TEAM', team.currentTeamRole)) {
     return (
       <GenericErrorLayout
@@ -138,7 +153,7 @@ export default function TeamsSettingsLayout() {
             'col-span-12 mb-8 flex flex-wrap items-center justify-start gap-x-2 gap-y-4 md:col-span-3 md:w-full md:flex-col md:items-start md:gap-y-2',
           )}
         >
-          {teamSettingRoutes.map((route) => (
+          {visibleTeamSettingRoutes.map((route) => (
             <NavLink
               to={route.path}
               className={cn('group w-full justify-start', route.isSubNav && 'pl-8')}

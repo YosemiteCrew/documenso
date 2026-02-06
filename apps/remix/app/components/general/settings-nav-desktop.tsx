@@ -16,6 +16,7 @@ import { Link } from 'react-router';
 
 import { useSession } from '@documenso/lib/client-only/providers/session';
 import { IS_BILLING_ENABLED } from '@documenso/lib/constants/app';
+import { isExternalUser } from '@documenso/lib/utils/is-external-user';
 import { canExecuteOrganisationAction, isPersonalLayout } from '@documenso/lib/utils/organisations';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
@@ -25,13 +26,18 @@ export type SettingsDesktopNavProps = HTMLAttributes<HTMLDivElement>;
 export const SettingsDesktopNav = ({ className, ...props }: SettingsDesktopNavProps) => {
   const { pathname } = useLocation();
 
-  const { organisations } = useSession();
+  const { organisations, user } = useSession();
 
   const isPersonalLayoutMode = isPersonalLayout(organisations);
+  const isExternal = isExternalUser(user);
 
   const hasManageableBillingOrgs = organisations.some((org) =>
     canExecuteOrganisationAction('MANAGE_BILLING', org.currentOrganisationRole),
   );
+
+  if (isExternal) {
+    return null;
+  }
 
   return (
     <div className={cn('flex flex-col gap-y-2', className)} {...props}>
