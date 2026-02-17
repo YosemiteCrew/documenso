@@ -8,7 +8,7 @@ import {
   isRouteErrorResponse,
   useLoaderData,
 } from 'react-router';
-import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes';
+import { PreventFlashOnWrongTheme, Theme, ThemeProvider, useTheme } from 'remix-themes';
 
 import { getOptionalSession } from '@documenso/auth/server/lib/utils/get-session';
 import { SessionProvider } from '@documenso/lib/client-only/providers/session';
@@ -45,7 +45,7 @@ export async function loader({ request }: Route.LoaderArgs) {
   const embedMode = process.env.DOCUMENSO_EMBED_MODE === 'true';
 
   const { getTheme } = await themeSessionResolver(request);
-  const resolvedTheme = embedMode ? 'light' : getTheme();
+  const resolvedTheme = embedMode ? Theme.LIGHT : getTheme();
 
   const cookieHeader = request.headers.get('cookie') ?? '';
 
@@ -101,7 +101,7 @@ export function LayoutContent({ children }: { children: React.ReactNode }) {
     useLoaderData<typeof loader>() || {};
 
   const [theme] = useTheme();
-  const htmlTheme = embedMode ? 'light' : theme;
+  const htmlTheme = embedMode ? Theme.LIGHT : theme;
   const htmlClassName = embedMode
     ? 'yc-embed dark-mode-disabled'
     : [htmlTheme ?? '', embedMode ? 'yc-embed' : ''].filter(Boolean).join(' ');
