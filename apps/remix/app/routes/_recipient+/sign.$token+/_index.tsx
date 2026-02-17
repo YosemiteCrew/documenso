@@ -28,7 +28,6 @@ import { extractDocumentAuthMethods } from '@documenso/lib/utils/document-auth';
 import { prisma } from '@documenso/prisma';
 import { SigningCard3D } from '@documenso/ui/components/signing-card';
 
-import { Header as AuthenticatedHeader } from '~/components/general/app-header';
 import { DocumentSigningAuthPageView } from '~/components/general/document-signing/document-signing-auth-page';
 import { DocumentSigningAuthProvider } from '~/components/general/document-signing/document-signing-auth-provider';
 import { DocumentSigningPageViewV1 } from '~/components/general/document-signing/document-signing-page-view-v1';
@@ -388,8 +387,6 @@ const SigningPageV1 = ({ data }: { data: Awaited<ReturnType<typeof handleV1Loade
         user={user}
       >
         <>
-          {sessionData?.user && <AuthenticatedHeader />}
-
           <div className="mb-8 mt-8 px-4 md:mb-12 md:mt-12 md:px-8">
             <DocumentSigningPageViewV1
               recipient={recipientWithFields}
