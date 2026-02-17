@@ -1,6 +1,6 @@
 import { Trans } from '@lingui/react/macro';
 import { ChevronLeft } from 'lucide-react';
-import { Link, Outlet, isRouteErrorResponse } from 'react-router';
+import { Link, Outlet, isRouteErrorResponse, useLocation } from 'react-router';
 
 import { useOptionalSession } from '@documenso/lib/client-only/providers/session';
 import { cn } from '@documenso/ui/lib/utils';
@@ -17,15 +17,12 @@ import type { Route } from './+types/_layout';
  *
  * Such as direct template access, or signing.
  */
-export default function RecipientLayout({ matches }: Route.ComponentProps) {
+export default function RecipientLayout() {
   const { sessionData } = useOptionalSession();
+  const location = useLocation();
 
-  // Hide the header for signing routes.
-  const hideHeader = matches.some(
-    (match) =>
-      match?.id === 'routes/_recipient+/sign.$token+/_index' ||
-      match?.id === 'routes/_recipient+/d.$token+/_index',
-  );
+  // Hide app header for all recipient token flows (document sign + form submission).
+  const hideHeader = /^\/(sign|d)\//.test(location.pathname);
 
   return (
     <div className="yc-sign-shell min-h-screen bg-white text-[#302f2e]">

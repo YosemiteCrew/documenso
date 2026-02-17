@@ -17,7 +17,6 @@ import { getUserByEmail } from '@documenso/lib/server-only/user/get-user-by-emai
 import { isDocumentCompleted } from '@documenso/lib/utils/document';
 import { env } from '@documenso/lib/utils/env';
 import { trpc } from '@documenso/trpc/react';
-import { DocumentShareButton } from '@documenso/ui/components/document/document-share-button';
 import { SigningCard3D } from '@documenso/ui/components/signing-card';
 import { cn } from '@documenso/ui/lib/utils';
 import { Badge } from '@documenso/ui/primitives/badge';
@@ -248,12 +247,6 @@ export default function CompletedSigningPage({ loaderData }: Route.ComponentProp
             ))}
 
           <div className="yc-sign-actions mt-8 flex w-full max-w-xs flex-col items-stretch gap-4 md:w-auto md:max-w-none md:flex-row md:items-center">
-            <DocumentShareButton
-              documentId={document.id}
-              token={recipient.token}
-              className="w-full max-w-none rounded-2xl md:flex-1"
-            />
-
             {isDocumentCompleted(document) && (
               <EnvelopeDownloadDialog
                 envelopeId={document.envelopeId}
