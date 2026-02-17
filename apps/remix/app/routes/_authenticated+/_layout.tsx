@@ -27,6 +27,7 @@ import type { Route } from './+types/_layout';
 export const shouldRevalidate = () => false;
 
 export async function loader({ request }: Route.LoaderArgs) {
+  const embedMode = process.env.DOCUMENSO_EMBED_MODE === 'true';
   const [session, banner] = await Promise.all([
     getOptionalSession(request),
     getSiteSettings().then((settings) =>
@@ -40,11 +41,12 @@ export async function loader({ request }: Route.LoaderArgs) {
 
   return {
     banner,
+    embedMode,
   };
 }
 
 export default function Layout({ loaderData, params, matches }: Route.ComponentProps) {
-  const { banner } = loaderData;
+  const { banner, embedMode } = loaderData;
 
   const { user, organisations } = useSession();
 
@@ -110,17 +112,17 @@ export default function Layout({ loaderData, params, matches }: Route.ComponentP
   return (
     <OrganisationProvider organisation={currentOrganisation}>
       <TeamProvider team={currentTeam || null}>
-        <OrganisationBillingBanner />
+        {!embedMode && <OrganisationBillingBanner />}
 
-        {!user.emailVerified && <VerifyEmailBanner email={user.email} />}
+        {!embedMode && !user.emailVerified && <VerifyEmailBanner email={user.email} />}
 
-        {banner && !hideHeader && <AppBanner banner={banner} />}
+        {banner && !hideHeader && !embedMode && <AppBanner banner={banner} />}
 
-        {!hideHeader && <Header />}
+        {!hideHeader && !embedMode && <Header />}
 
         <main
           className={cn({
-            'mt-8 pb-8 md:mt-12 md:pb-12': !hideHeader,
+            'mt-8 pb-8 md:mt-12 md:pb-12': !hideHeader && !embedMode,
           })}
         >
           <Outlet />

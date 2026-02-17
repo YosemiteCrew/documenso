@@ -62,10 +62,234 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Satoshi';
+  src:
+    url('/fonts/satoshi-font/Satoshi-Light.woff2') format('woff2'),
+    url('/fonts/satoshi-font/Satoshi-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src:
+    url('/fonts/satoshi-font/Satoshi-Regular.woff2') format('woff2'),
+    url('/fonts/satoshi-font/Satoshi-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src:
+    url('/fonts/satoshi-font/Satoshi-Medium.woff2') format('woff2'),
+    url('/fonts/satoshi-font/Satoshi-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src:
+    url('/fonts/satoshi-font/Satoshi-Bold.woff2') format('woff2'),
+    url('/fonts/satoshi-font/Satoshi-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src:
+    url('/fonts/satoshi-font/Satoshi-Black.woff2') format('woff2'),
+    url('/fonts/satoshi-font/Satoshi-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
-    --font-sans: 'Inter';
+    --yc-radius-sm: 8px;
+    --yc-radius-lg: 16px;
+  }
+
+  :root {
+    --font-sans: 'Satoshi';
     --font-signature: 'Caveat';
     --font-noto: 'Noto Sans', 'Noto Sans Korean', 'Noto Sans Japanese', 'Noto Sans Chinese';
+
+    --background: 0 0% 100%;
+    --foreground: 25 3% 18%;
+
+    --muted: 0 0% 92%;
+    --muted-foreground: 60 1% 35%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 25 3% 18%;
+
+    --card: 0 0% 100%;
+    --card-border: 0 0% 92%;
+    --card-foreground: 25 3% 18%;
+
+    --field-card: 214 90% 97%;
+    --field-card-border: 214 90% 54%;
+    --field-card-foreground: 25 3% 18%;
+
+    --widget: 0 0% 97%;
+    --widget-foreground: 0 0% 95%;
+
+    --border: 0 0% 92%;
+    --input: 0 0% 92%;
+
+    --primary: 214 90% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 214 90% 96%;
+    --secondary-foreground: 25 3% 18%;
+
+    --accent: 214 90% 96%;
+    --accent-foreground: 25 3% 18%;
+
+    --destructive: 3 79% 54%;
+    --destructive-foreground: 0 0% 100%;
+
+    --ring: 214 90% 53%;
+
+    --warning: 28 92% 55%;
+    --gold: 45 92% 55%;
+
+    /* Align new palette tokens with Yosemite Crew */
+    --new-primary-50: 214 90% 97%;
+    --new-primary-100: 214 90% 94%;
+    --new-primary-200: 214 70% 87%;
+    --new-primary-300: 214 71% 81%;
+    --new-primary-400: 214 71% 74%;
+    --new-primary-500: 214 71% 67%;
+    --new-primary-600: 214 90% 53%;
+    --new-primary-700: 214 90% 41%;
+    --new-primary-800: 214 90% 27%;
+    --new-primary-900: 214 90% 14%;
+    --new-primary-950: 214 90% 7%;
+
+    --new-neutral-50: 0 0% 100%;
+    --new-neutral-100: 0 0% 92%;
+    --new-neutral-200: 0 0% 75%;
+    --new-neutral-300: 0 0% 64%;
+    --new-neutral-400: 0 0% 56%;
+    --new-neutral-500: 0 0% 45%;
+    --new-neutral-600: 0 0% 38%;
+    --new-neutral-700: 0 0% 35%;
+    --new-neutral-800: 25 3% 18%;
+    --new-neutral-900: 25 3% 18%;
+    --new-neutral-950: 0 0% 10%;
+
+    --new-warning-500: 28 92% 55%;
+    --new-error-500: 3 79% 54%;
+    --new-info-500: 214 56% 50%;
+    --new-surface-white: 0 0% 96%;
+  }
+
+  html.yc-embed,
+  html.yc-embed body {
+    background-color: #ffffff !important;
+    color: #302f2e !important;
+  }
+
+  html.yc-embed {
+    --background: 0 0% 100%;
+    --foreground: 25 3% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 25 3% 18%;
+    --card-border: 60 1% 35%;
+    --border: 60 1% 35%;
+    --input: 0 0% 92%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 60 1% 35%;
+  }
+
+  html.yc-embed body {
+    background-color: #ffffff;
+    color: #302f2e;
+  }
+
+  html.yc-embed .border-border {
+    border-color: #595958 !important;
+  }
+
+  html.yc-embed .bg-background {
+    background-color: #ffffff !important;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-sans);
+  }
+
+  /* Force non-button white text to the app's dark text color in embed mode */
+  html.yc-embed .text-white {
+    color: #302f2e !important;
+  }
+
+  html.yc-embed button .text-white,
+  html.yc-embed [role='button'] .text-white {
+    color: #ffffff !important;
+  }
+
+  html.yc-embed .text-muted-foreground {
+    color: #595958 !important;
+  }
+
+  html.yc-embed .text-foreground {
+    color: #302f2e !important;
+  }
+
+  .yc-sign-shell {
+    font-family: var(--font-sans);
+    background-color: #ffffff;
+    color: #302f2e;
+  }
+
+  .yc-sign-shell .text-muted-foreground,
+  .yc-sign-shell .text-muted-foreground\/60 {
+    color: #595958 !important;
+  }
+
+  .yc-sign-shell .text-documenso-700,
+  .yc-sign-shell .text-documenso-600 {
+    color: #247aed !important;
+  }
+
+  .yc-sign-shell .yc-sign-actions button,
+  .yc-sign-shell .yc-sign-actions a {
+    border-radius: var(--yc-radius-lg) !important;
+  }
+
+  .yc-sign-shell .rounded-2xl,
+  .yc-sign-shell .rounded-xl {
+    border-radius: var(--yc-radius-lg) !important;
+  }
+
+  .yc-sign-shell .rounded-lg,
+  .yc-sign-shell .rounded-md,
+  .yc-sign-shell .rounded,
+  .yc-sign-shell .rounded-sm {
+    border-radius: var(--yc-radius-sm) !important;
+  }
+
+  .yc-auth-external {
+    font-family: var(--font-sans);
+    background-color: #ffffff;
+    color: #302f2e;
   }
 }

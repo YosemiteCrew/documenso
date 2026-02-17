@@ -43,11 +43,13 @@ import { EnvelopeDownloadDialog } from '../dialogs/envelope-download-dialog';
 export type DocumentsTableActionDropdownProps = {
   row: TDocumentRow;
   onMoveDocument?: () => void;
+  embedMode?: boolean;
 };
 
 export const DocumentsTableActionDropdown = ({
   row,
   onMoveDocument,
+  embedMode = false,
 }: DocumentsTableActionDropdownProps) => {
   const { user } = useSession();
   const team = useCurrentTeam();
@@ -73,10 +75,14 @@ export const DocumentsTableActionDropdown = ({
 
   const nonSignedRecipients = row.recipients.filter((item) => item.signingStatus !== 'SIGNED');
 
+  if (embedMode) {
+    return null;
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger data-testid="document-table-action-btn">
-        <MoreHorizontal className="text-muted-foreground h-5 w-5" />
+        <MoreHorizontal className="h-5 w-5 text-muted-foreground" />
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-52" align="start" forceMount>

@@ -24,9 +24,10 @@ import { EnvelopeUploadButton } from '../envelope/envelope-upload-button';
 export type FolderGridProps = {
   type: FolderType;
   parentId: string | null;
+  disableActions?: boolean;
 };
 
-export const FolderGrid = ({ type, parentId }: FolderGridProps) => {
+export const FolderGrid = ({ type, parentId, disableActions = false }: FolderGridProps) => {
   const team = useCurrentTeam();
   const organisation = useCurrentOrganisation();
 
@@ -96,16 +97,18 @@ export const FolderGrid = ({ type, parentId }: FolderGridProps) => {
           )}
         </div>
 
-        <div className="flex gap-4 sm:flex-row sm:justify-end">
-          <EnvelopeUploadButton type={type} folderId={parentId || undefined} />
+        {!disableActions && (
+          <div className="flex gap-4 sm:flex-row sm:justify-end">
+            <EnvelopeUploadButton type={type} folderId={parentId || undefined} />
 
-          {/* If you delete this, delete the component as well. */}
-          {organisation.organisationClaim.flags.allowLegacyEnvelopes && (
-            <DocumentUploadButtonLegacy type={type} />
-          )}
+            {/* If you delete this, delete the component as well. */}
+            {organisation.organisationClaim.flags.allowLegacyEnvelopes && (
+              <DocumentUploadButtonLegacy type={type} />
+            )}
 
-          <FolderCreateDialog type={type} />
-        </div>
+            <FolderCreateDialog type={type} />
+          </div>
+        )}
       </div>
 
       {isPending ? (
@@ -131,14 +134,16 @@ export const FolderGrid = ({ type, parentId }: FolderGridProps) => {
         </div>
       ) : foldersData && foldersData.folders.length === 0 ? (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          <FolderCreateDialog
-            type={type}
-            trigger={
-              <button>
-                <FolderCardEmpty type={type} />
-              </button>
-            }
-          />
+          {!disableActions ? (
+            <FolderCreateDialog
+              type={type}
+              trigger={
+                <button>
+                  <FolderCardEmpty type={type} />
+                </button>
+              }
+            />
+          ) : null}
         </div>
       ) : (
         foldersData && (

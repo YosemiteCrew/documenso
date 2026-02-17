@@ -7,7 +7,6 @@ import {
   data,
   isRouteErrorResponse,
   useLoaderData,
-  useLocation,
 } from 'react-router';
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes';
 
@@ -43,8 +42,10 @@ export const shouldRevalidate = () => false;
 
 export async function loader({ request }: Route.LoaderArgs) {
   const session = await getOptionalSession(request);
+  const embedMode = process.env.DOCUMENSO_EMBED_MODE === 'true';
 
   const { getTheme } = await themeSessionResolver(request);
+  const resolvedTheme = embedMode ? 'light' : getTheme();
 
   const cookieHeader = request.headers.get('cookie') ?? '';
 
@@ -65,7 +66,8 @@ export async function loader({ request }: Route.LoaderArgs) {
   return data(
     {
       lang,
-      theme: getTheme(),
+      theme: resolvedTheme,
+      embedMode,
       disableAnimations,
       session: session.isAuthenticated
         ? {
@@ -87,8 +89,6 @@ export async function loader({ request }: Route.LoaderArgs) {
 export function Layout({ children }: { children: React.ReactNode }) {
   const { theme } = useLoaderData<typeof loader>() || {};
 
-  const location = useLocation();
-
   return (
     <ThemeProvider specifiedTheme={theme} themeAction="/api/theme">
       <LayoutContent>{children}</LayoutContent>
@@ -97,13 +97,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export function LayoutContent({ children }: { children: React.ReactNode }) {
-  const { publicEnv, session, lang, disableAnimations, ...data } =
+  const { publicEnv, session, lang, disableAnimations, embedMode, ...data } =
     useLoaderData<typeof loader>() || {};
 
   const [theme] = useTheme();
+  const htmlTheme = embedMode ? 'light' : theme;
+  const htmlClassName = embedMode
+    ? 'yc-embed dark-mode-disabled'
+    : [htmlTheme ?? '', embedMode ? 'yc-embed' : ''].filter(Boolean).join(' ');
 
   return (
-    <html translate="no" lang={lang} data-theme={theme} className={theme ?? ''}>
+    <html
+      translate="no"
+      lang={lang}
+      data-theme={htmlTheme}
+      className={htmlClassName}
+      data-embed={embedMode ? 'true' : undefined}
+    >
       <head>
         <meta charSet="utf-8" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

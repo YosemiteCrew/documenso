@@ -30,6 +30,7 @@ export type DocumentsTableProps = {
   isLoading?: boolean;
   isLoadingError?: boolean;
   onMoveDocument?: (documentId: number) => void;
+  embedMode?: boolean;
 };
 
 type DocumentsTableRow = TFindDocumentsResponse['data'][number];
@@ -39,6 +40,7 @@ export const DocumentsTable = ({
   isLoading,
   isLoadingError,
   onMoveDocument,
+  embedMode = false,
 }: DocumentsTableProps) => {
   const { _, i18n } = useLingui();
 
@@ -85,9 +87,10 @@ export const DocumentsTable = ({
         cell: ({ row }) =>
           (!row.original.deletedAt || isDocumentCompleted(row.original.status)) && (
             <div className="flex items-center gap-x-4">
-              <DocumentsTableActionButton row={row.original} />
+              <DocumentsTableActionButton row={row.original} embedMode={embedMode} />
               <DocumentsTableActionDropdown
                 row={row.original}
+                embedMode={embedMode}
                 onMoveDocument={onMoveDocument ? () => onMoveDocument(row.original.id) : undefined}
               />
             </div>
@@ -157,8 +160,8 @@ export const DocumentsTable = ({
       </DataTable>
 
       {isPending && (
-        <div className="bg-background/50 absolute inset-0 flex items-center justify-center">
-          <Loader className="text-muted-foreground h-8 w-8 animate-spin" />
+        <div className="absolute inset-0 flex items-center justify-center bg-background/50">
+          <Loader className="h-8 w-8 animate-spin text-muted-foreground" />
         </div>
       )}
     </div>

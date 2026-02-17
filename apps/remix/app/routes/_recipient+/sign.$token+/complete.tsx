@@ -143,7 +143,7 @@ export default function CompletedSigningPage({ loaderData }: Route.ComponentProp
   return (
     <div
       className={cn(
-        '-mx-4 flex flex-col items-center overflow-hidden px-4 pt-16 md:-mx-8 md:px-8 lg:pt-20 xl:pt-28',
+        'yc-sign-complete -mx-4 flex flex-col items-center overflow-hidden px-4 pt-16 md:-mx-8 md:px-8 lg:pt-20 xl:pt-28',
         { 'pt-0 lg:pt-0 xl:pt-0': canSignUp },
       )}
     >
@@ -158,7 +158,11 @@ export default function CompletedSigningPage({ loaderData }: Route.ComponentProp
             'mb-8 p-4 md:mb-0 md:p-12': canSignUp,
           })}
         >
-          <Badge variant="neutral" size="default" className="mb-6 rounded-xl border bg-transparent">
+          <Badge
+            variant="neutral"
+            size="default"
+            className="mb-6 rounded-2xl border border-[#595958] bg-transparent"
+          >
             <span className="block max-w-[10rem] truncate font-medium hover:underline md:max-w-[20rem]">
               {document.title}
             </span>
@@ -243,11 +247,11 @@ export default function CompletedSigningPage({ loaderData }: Route.ComponentProp
               </p>
             ))}
 
-          <div className="mt-8 flex w-full max-w-xs flex-col items-stretch gap-4 md:w-auto md:max-w-none md:flex-row md:items-center">
+          <div className="yc-sign-actions mt-8 flex w-full max-w-xs flex-col items-stretch gap-4 md:w-auto md:max-w-none md:flex-row md:items-center">
             <DocumentShareButton
               documentId={document.id}
               token={recipient.token}
-              className="w-full max-w-none md:flex-1"
+              className="w-full max-w-none rounded-2xl md:flex-1"
             />
 
             {isDocumentCompleted(document) && (
@@ -257,7 +261,11 @@ export default function CompletedSigningPage({ loaderData }: Route.ComponentProp
                 envelopeItems={document.envelopeItems}
                 token={recipient?.token}
                 trigger={
-                  <Button type="button" variant="outline" className="flex-1 md:flex-initial">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="flex-1 rounded-2xl border-[#595958] md:flex-initial"
+                  >
                     <DownloadIcon className="mr-2 h-5 w-5" />
                     <Trans>Download</Trans>
                   </Button>
@@ -266,7 +274,7 @@ export default function CompletedSigningPage({ loaderData }: Route.ComponentProp
             )}
 
             {user && (
-              <Button asChild>
+              <Button asChild className="rounded-2xl">
                 <Link to={returnToHomePath}>
                   <Trans>Go Back Home</Trans>
                 </Link>

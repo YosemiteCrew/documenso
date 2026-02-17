@@ -28,7 +28,7 @@ export default function RecipientLayout({ matches }: Route.ComponentProps) {
   );
 
   return (
-    <div className="min-h-screen">
+    <div className="yc-sign-shell min-h-screen bg-white text-[#302f2e]">
       {!hideHeader && sessionData?.user && <AuthenticatedHeader />}
 
       <main

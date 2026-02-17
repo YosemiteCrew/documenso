@@ -16,6 +16,10 @@ import { generateSessionToken } from './session';
 export const sessionCookieName = formatSecureCookieName('sessionId');
 export const csrfCookieName = formatSecureCookieName('csrfToken');
 
+const allowThirdPartyCookies =
+  env('DOCUMENSO_EMBED_MODE') === 'true' || env('DOCUMENSO_FORCE_SECURE_COOKIES') === 'true';
+const effectiveUseSecureCookies = useSecureCookies || allowThirdPartyCookies;
+
 const getAuthSecret = () => {
   const authSecret = env('NEXTAUTH_SECRET');
 
@@ -32,8 +36,8 @@ const getAuthSecret = () => {
 export const sessionCookieOptions = {
   httpOnly: true,
   path: '/',
-  sameSite: useSecureCookies ? 'none' : 'lax',
-  secure: useSecureCookies,
+  sameSite: effectiveUseSecureCookies ? 'none' : 'lax',
+  secure: effectiveUseSecureCookies,
   domain: getCookieDomain(),
   expires: new Date(Date.now() + AUTH_SESSION_LIFETIME),
 } as const;

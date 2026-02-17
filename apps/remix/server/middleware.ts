@@ -42,6 +42,15 @@ export const appMiddleware = async (c: Context, next: Next) => {
   // - Setting cookies
   // - Any operations that should happen after all route handlers but before sending the response
 
+  const frameAncestors =
+    process.env.DOCUMENSO_FRAME_ANCESTORS ||
+    process.env.DOCUMENSO_ALLOWED_FRAME_ANCESTORS ||
+    "'self'";
+
+  if (!c.res.headers.get('Content-Security-Policy')) {
+    c.header('Content-Security-Policy', `frame-ancestors ${frameAncestors}`);
+  }
+
   debug.log('Path', path);
 
   const pathname = path.replace('.data', '');

@@ -17,6 +17,20 @@ type ExchangeTokenResponse = {
   documentsUrl?: string;
 };
 
+const parseExchangeTokenResponse = (payload: unknown): ExchangeTokenResponse => {
+  if (!payload || typeof payload !== 'object') {
+    return {};
+  }
+
+  const redirectUrl = Reflect.get(payload, 'redirectUrl');
+  const documentsUrl = Reflect.get(payload, 'documentsUrl');
+
+  return {
+    redirectUrl: typeof redirectUrl === 'string' ? redirectUrl : undefined,
+    documentsUrl: typeof documentsUrl === 'string' ? documentsUrl : undefined,
+  };
+};
+
 export const loader = ({ request }: Route.LoaderArgs) => {
   const url = new URL(request.url);
   const token = url.searchParams.get('token');
@@ -58,7 +72,7 @@ export default function AuthExternalPage({ loaderData }: Route.ComponentProps) {
         throw new Error(message);
       }
 
-      const data = (await response.json()) as ExchangeTokenResponse;
+      const data = parseExchangeTokenResponse(await response.json());
 
       await refreshSession();
 
@@ -87,9 +101,9 @@ export default function AuthExternalPage({ loaderData }: Route.ComponentProps) {
 
   if (isLoading) {
     return (
-      <div className="mx-auto flex h-[70vh] w-full max-w-md flex-col items-center justify-center">
-        <Loader className="h-8 w-8 animate-spin text-documenso" />
-        <p className="mt-4 text-sm text-muted-foreground">
+      <div className="yc-auth-external mx-auto flex h-[70vh] w-full max-w-md flex-col items-center justify-center">
+        <Loader className="h-8 w-8 animate-spin text-[#247aed]" />
+        <p className="mt-4 text-sm text-[#595958]">
           <Trans>Signing you in...</Trans>
         </p>
       </div>
@@ -97,15 +111,15 @@ export default function AuthExternalPage({ loaderData }: Route.ComponentProps) {
   }
 
   return (
-    <div className="mx-auto flex h-[70vh] w-full max-w-md flex-col items-center justify-center">
-      <h1 className="text-2xl font-semibold">
+    <div className="yc-auth-external mx-auto flex h-[70vh] w-full max-w-md flex-col items-center justify-center">
+      <h1 className="text-2xl font-semibold text-[#302f2e]">
         <Trans>Unable to sign you in</Trans>
       </h1>
-      <p className="mt-2 text-sm text-muted-foreground">
+      <p className="mt-2 text-sm text-[#595958]">
         {errorMessage ? errorMessage : <Trans>Please try again.</Trans>}
       </p>
       <Button
-        className="mt-6"
+        className="mt-6 rounded-2xl"
         onClick={() => {
           void navigate('/');
         }}

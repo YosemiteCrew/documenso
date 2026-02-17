@@ -16,9 +16,13 @@ import { EnvelopeDownloadDialog } from '../dialogs/envelope-download-dialog';
 
 export type DocumentsTableActionButtonProps = {
   row: TDocumentRow;
+  embedMode?: boolean;
 };
 
-export const DocumentsTableActionButton = ({ row }: DocumentsTableActionButtonProps) => {
+export const DocumentsTableActionButton = ({
+  row,
+  embedMode = false,
+}: DocumentsTableActionButtonProps) => {
   const { user } = useSession();
 
   const team = useCurrentTeam();
@@ -39,6 +43,53 @@ export const DocumentsTableActionButton = ({ row }: DocumentsTableActionButtonPr
 
   // TODO: Consider if want to keep this logic for hiding viewing for CC'ers
   if (recipient?.role === RecipientRole.CC && isComplete === false) {
+    return null;
+  }
+
+  if (embedMode) {
+    if (recipient?.role === RecipientRole.CC) {
+      return null;
+    }
+
+    if (recipient && isPending && !isSigned) {
+      return (
+        <Button className="w-32" asChild>
+          <Link to={`/sign/${recipient?.token}`}>
+            {match(role)
+              .with(RecipientRole.SIGNER, () => (
+                <>
+                  <Pencil className="-ml-1 mr-2 h-4 w-4" />
+                  <Trans>Sign</Trans>
+                </>
+              ))
+              .with(RecipientRole.APPROVER, () => (
+                <>
+                  <CheckCircle className="-ml-1 mr-2 h-4 w-4" />
+                  <Trans>Approve</Trans>
+                </>
+              ))
+              .otherwise(() => (
+                <>
+                  <EyeIcon className="-ml-1 mr-2 h-4 w-4" />
+                  <Trans>View</Trans>
+                </>
+              ))}
+          </Link>
+        </Button>
+      );
+    }
+
+    if (recipient && (isComplete || isSigned)) {
+      return (
+        <Button className="w-32" asChild>
+          <Link to={`/sign/${recipient?.token}`}>
+            <EyeIcon className="-ml-1 mr-2 h-4 w-4" />
+            <Trans>View</Trans>
+          </Link>
+        </Button>
+      );
+    }
+
     return null;
   }
 

@@ -360,21 +360,12 @@ const SigningPageV1 = ({ data }: { data: Awaited<ReturnType<typeof handleV1Loade
           </p>
 
           {user ? (
-            <Link to="/" className="mt-36 text-documenso-700 hover:text-documenso-600">
+            <Link to="/" className="mt-36 text-[#247aed] hover:text-[#3b87ec]">
               <Trans>Go Back Home</Trans>
             </Link>
           ) : (
-            <p className="mt-36 text-sm text-muted-foreground/60">
-              <Trans>
-                Want to send slick signing links like this one?{' '}
-                <Link
-                  to="/"
-                  className="text-documenso-700 hover:text-documenso-600"
-                >
-                  Check out Yosemite Crew
-                </Link>
-                .
-              </Trans>
+            <p className="mt-36 text-sm text-[#595958]">
+              <Trans>You can close this window.</Trans>
             </p>
           )}
         </div>
@@ -460,21 +451,12 @@ const SigningPageV2 = ({ data }: { data: Awaited<ReturnType<typeof handleV2Loade
           </p>
 
           {user ? (
-            <Link to="/" className="mt-36 text-documenso-700 hover:text-documenso-600">
+            <Link to="/" className="mt-36 text-[#247aed] hover:text-[#3b87ec]">
               <Trans>Go Back Home</Trans>
             </Link>
           ) : (
-            <p className="mt-36 text-sm text-muted-foreground/60">
-              <Trans>
-                Want to send slick signing links like this one?{' '}
-                <Link
-                  to="/"
-                  className="text-documenso-700 hover:text-documenso-600"
-                >
-                  Check out Yosemite Crew
-                </Link>
-                .
-              </Trans>
+            <p className="mt-36 text-sm text-[#595958]">
+              <Trans>You can close this window.</Trans>
             </p>
           )}
         </div>
