@@ -295,7 +295,7 @@ export const DocumentSigningSignatureField = ({
             <div className="flex w-full flex-1 flex-nowrap gap-4">
               <Button
                 type="button"
-                className="flex-1"
+                className="yc-btn-secondary flex-1"
                 variant="secondary"
                 onClick={() => {
                   setShowSignatureModal(false);
@@ -306,7 +306,7 @@ export const DocumentSigningSignatureField = ({
               </Button>
               <Button
                 type="button"
-                className="flex-1"
+                className="yc-btn-primary flex-1"
                 disabled={!localSignature}
                 onClick={() => onDialogSignClick()}
               >

@@ -118,7 +118,12 @@ export const DocumentSigningAuth2FA = ({
           </AlertDescription>
         </Alert>
         <DialogFooter>
-          <Button type="button" variant="secondary" onClick={() => onOpenChange(false)}>
+          <Button
+            type="button"
+            variant="secondary"
+            className="yc-btn-secondary"
+            onClick={() => onOpenChange(false)}
+          >
             <Trans>Close</Trans>
           </Button>
 
@@ -171,11 +176,16 @@ export const DocumentSigningAuth2FA = ({
             )}
 
             <DialogFooter>
-              <Button type="button" variant="secondary" onClick={() => onOpenChange(false)}>
+              <Button
+                type="button"
+                variant="secondary"
+                className="yc-btn-secondary"
+                onClick={() => onOpenChange(false)}
+              >
                 <Trans>Cancel</Trans>
               </Button>
 
-              <Button type="submit" loading={isCurrentlyAuthenticating}>
+              <Button type="submit" className="yc-btn-primary" loading={isCurrentlyAuthenticating}>
                 <Trans>Sign</Trans>
               </Button>
             </DialogFooter>

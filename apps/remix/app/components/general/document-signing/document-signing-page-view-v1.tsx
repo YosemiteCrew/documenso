@@ -334,7 +334,7 @@ export const DocumentSigningPageViewV1 = ({
                   .with({ isExpanded: true }, () => (
                     <Button
                       variant="outline"
-                      className="h-8 w-8 bg-background p-0 md:hidden dark:bg-foreground"
+                      className="yc-btn-secondary h-8 w-8 bg-background p-0 md:hidden dark:bg-foreground"
                       onClick={() => setIsExpanded(false)}
                     >
                       <LucideChevronDown className="h-5 w-5 text-muted-foreground dark:text-background" />
@@ -343,7 +343,7 @@ export const DocumentSigningPageViewV1 = ({
                   .otherwise(() => (
                     <Button
                       variant="outline"
-                      className="h-8 w-8 bg-background p-0 md:hidden dark:bg-foreground"
+                      className="yc-btn-secondary h-8 w-8 bg-background p-0 md:hidden dark:bg-foreground"
                       onClick={() => setIsExpanded(true)}
                     >
                       <LucideChevronUp className="h-5 w-5 text-muted-foreground dark:text-background" />

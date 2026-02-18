@@ -257,7 +257,7 @@ export default function CompletedSigningPage({ loaderData }: Route.ComponentProp
                   <Button
                     type="button"
                     variant="outline"
-                    className="flex-1 rounded-2xl border-[#595958] md:flex-initial"
+                    className="yc-btn-secondary flex-1 md:flex-initial"
                   >
                     <DownloadIcon className="mr-2 h-5 w-5" />
                     <Trans>Download</Trans>
@@ -267,7 +267,7 @@ export default function CompletedSigningPage({ loaderData }: Route.ComponentProp
             )}
 
             {user && (
-              <Button asChild className="rounded-2xl">
+              <Button asChild className="yc-btn-primary">
                 <Link to={returnToHomePath}>
                   <Trans>Go Back Home</Trans>
                 </Link>

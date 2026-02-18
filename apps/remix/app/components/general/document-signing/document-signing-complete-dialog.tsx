@@ -200,7 +200,9 @@ export const DocumentSigningCompleteDialog = ({
     <Dialog open={showDialog} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <Button
-          className="w-full"
+          className={match({ isComplete, role: recipient.role })
+            .with({ isComplete: true, role: RecipientRole.VIEWER }, () => 'yc-btn-secondary w-full')
+            .otherwise(() => 'yc-btn-primary w-full')}
           type="button"
           size={buttonSize}
           onClick={fieldsValidated}

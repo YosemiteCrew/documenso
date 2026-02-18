@@ -167,11 +167,16 @@ export const SignFieldCheckboxDialog = createCallable<
               </ul>
 
               <DialogFooter>
-                <Button type="button" variant="secondary" onClick={() => call.end(null)}>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  className="yc-btn-secondary"
+                  onClick={() => call.end(null)}
+                >
                   <Trans>Cancel</Trans>
                 </Button>
 
-                <Button type="submit">
+                <Button type="submit" className="yc-btn-primary">
                   <Trans>Confirm</Trans>
                 </Button>
               </DialogFooter>
