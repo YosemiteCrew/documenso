@@ -131,7 +131,7 @@ export default function DocumentsPage() {
           </h2>
         </div>
 
-        <div className="-m-1 flex flex-wrap gap-x-4 gap-y-6 overflow-hidden p-1">
+        <div className="yc-doc-toolbar -m-1 flex flex-wrap gap-x-4 gap-y-6 overflow-hidden p-1">
           <Tabs value={findDocumentSearchParams.status || 'ALL'} className="overflow-x-auto">
             <TabsList>
               {[

@@ -460,3 +460,20 @@ html.yc-embed .rounded-sm {
 .yc-sign-shell {
   padding-bottom: 12px;
 }
+
+
+/* Documents toolbar radius alignment (sender, status, time, search) */
+.yc-doc-toolbar [role='tablist'] {
+  border-radius: var(--yc-radius-lg) !important;
+}
+
+.yc-doc-toolbar [role='tab'] {
+  border-radius: var(--yc-radius-lg) !important;
+}
+
+.yc-doc-toolbar [role='combobox'],
+.yc-doc-toolbar input[type='search'],
+.yc-doc-toolbar .border-input,
+.yc-doc-toolbar button {
+  border-radius: var(--yc-radius-lg) !important;
+}
