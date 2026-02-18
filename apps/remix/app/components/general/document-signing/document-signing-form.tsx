@@ -119,7 +119,7 @@ export const DocumentSigningForm = ({
   };
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col pb-3">
       {validateUninsertedFields && uninsertedFields[0] && (
         <FieldToolTip key={uninsertedFields[0].id} field={uninsertedFields[0]} color="warning">
           <Trans>Click to insert field</Trans>
@@ -295,7 +295,7 @@ export const DocumentSigningForm = ({
               <div className="mt-6 flex flex-col gap-4 md:flex-row">
                 <Button
                   type="button"
-                  className="w-full bg-black/5 hover:bg-black/10 dark:bg-muted dark:hover:bg-muted/80"
+                  className="yc-btn-secondary w-full"
                   variant="secondary"
                   size="lg"
                   disabled={typeof window !== 'undefined' && window.history.length <= 1}

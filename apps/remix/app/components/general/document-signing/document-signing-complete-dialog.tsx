@@ -369,6 +369,7 @@ export const DocumentSigningCompleteDialog = ({
                     <Button
                       type="button"
                       variant="secondary"
+                      className="yc-btn-secondary"
                       onClick={() => setShowDialog(false)}
                       disabled={form.formState.isSubmitting}
                     >
@@ -377,6 +378,7 @@ export const DocumentSigningCompleteDialog = ({
 
                     <Button
                       type="submit"
+                      className="yc-btn-primary"
                       disabled={!isComplete}
                       loading={form.formState.isSubmitting}
                     >

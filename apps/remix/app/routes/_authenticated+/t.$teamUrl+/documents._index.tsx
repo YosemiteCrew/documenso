@@ -114,7 +114,7 @@ export default function DocumentsPage() {
   }, [data?.stats]);
 
   const content = (
-    <div className="mx-auto w-full max-w-screen-xl px-4 md:px-8">
+    <div className="mx-auto w-full max-w-screen-xl px-4 pb-3 md:px-8 md:pb-6">
       {!embedMode && <FolderGrid type={FolderType.DOCUMENT} parentId={folderId ?? null} />}
 
       <div className="mt-8 flex flex-wrap items-center justify-between gap-x-4 gap-y-8">

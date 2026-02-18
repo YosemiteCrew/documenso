@@ -112,7 +112,7 @@ export function DocumentSigningRejectDialog({
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         {trigger ?? (
-          <Button variant="outline">
+          <Button variant="outline" className="yc-btn-secondary">
             <Trans>Reject Document</Trans>
           </Button>
         )}
@@ -154,7 +154,8 @@ export function DocumentSigningRejectDialog({
             <DialogFooter>
               <Button
                 type="button"
-                variant="ghost"
+                variant="secondary"
+                className="yc-btn-secondary"
                 onClick={() => setIsOpen(false)}
                 disabled={form.formState.isSubmitting}
               >
@@ -163,7 +164,8 @@ export function DocumentSigningRejectDialog({
 
               <Button
                 type="submit"
-                variant="destructive"
+                variant="outline"
+                className="yc-btn-secondary"
                 loading={form.formState.isSubmitting}
                 disabled={!form.formState.isValid}
               >
