@@ -279,7 +279,7 @@ export const DocumentSigningTextField = ({
           {parsedFieldMeta?.characterLimit !== undefined &&
             parsedFieldMeta?.characterLimit > 0 &&
             !userInputHasErrors && (
-              <div className="text-muted-foreground text-sm">
+              <div className="text-sm text-muted-foreground">
                 <Plural
                   value={charactersRemaining}
                   one="1 character remaining"
@@ -315,7 +315,7 @@ export const DocumentSigningTextField = ({
               <Button
                 type="button"
                 variant="secondary"
-                className="flex-1"
+                className="yc-btn-secondary flex-1"
                 onClick={() => {
                   setShowCustomTextModal(false);
                   setLocalCustomText('');
@@ -326,7 +326,7 @@ export const DocumentSigningTextField = ({
 
               <Button
                 type="button"
-                className="flex-1"
+                className="yc-btn-primary flex-1"
                 disabled={!localText || userInputHasErrors}
                 onClick={() => onDialogSignClick()}
               >

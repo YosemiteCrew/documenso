@@ -115,7 +115,7 @@ export function AssistantConfirmationDialog({
                   <div className="mt-4 flex flex-col gap-4">
                     {!isEditingNextSigner && (
                       <div>
-                        <p className="text-muted-foreground text-sm">
+                        <p className="text-sm text-muted-foreground">
                           The next recipient to sign this document will be{' '}
                           <span className="font-semibold">{form.watch('name')}</span> (
                           <span className="font-semibold">{form.watch('email')}</span>).
@@ -123,8 +123,8 @@ export function AssistantConfirmationDialog({
 
                         <Button
                           type="button"
-                          className="mt-2"
                           variant="outline"
+                          className="yc-btn-secondary mt-2"
                           size="sm"
                           onClick={() => setIsEditingNextSigner((prev) => !prev)}
                         >
@@ -185,11 +185,18 @@ export function AssistantConfirmationDialog({
               </div>
 
               <DialogFooter className="mt-4">
-                <Button type="button" variant="secondary" onClick={onClose} disabled={isSubmitting}>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  className="yc-btn-secondary"
+                  onClick={onClose}
+                  disabled={isSubmitting}
+                >
                   <Trans>Cancel</Trans>
                 </Button>
                 <Button
                   type="button"
+                  className="yc-btn-primary"
                   variant={hasUninsertedFields ? 'destructive' : 'default'}
                   disabled={isSubmitting}
                   onClick={handleSubmit}

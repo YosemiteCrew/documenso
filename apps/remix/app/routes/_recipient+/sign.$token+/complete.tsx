@@ -142,12 +142,12 @@ export default function CompletedSigningPage({ loaderData }: Route.ComponentProp
   return (
     <div
       className={cn(
-        'yc-sign-complete -mx-4 flex flex-col items-center overflow-hidden px-4 pt-16 md:-mx-8 md:px-8 lg:pt-20 xl:pt-28',
+        'yc-sign-complete -mx-4 flex flex-col items-center overflow-hidden px-4 pt-8 md:-mx-8 md:px-8 lg:pt-10 xl:pt-12',
         { 'pt-0 lg:pt-0 xl:pt-0': canSignUp },
       )}
     >
       <div
-        className={cn('relative mt-6 flex w-full flex-col items-center justify-center', {
+        className={cn('relative mt-2 flex w-full flex-col items-center justify-center', {
           'mt-0 flex-col divide-y overflow-hidden pt-6 md:pt-16 lg:flex-row lg:divide-x lg:divide-y-0 lg:pt-20 xl:pt-24':
             canSignUp,
         })}
@@ -257,7 +257,7 @@ export default function CompletedSigningPage({ loaderData }: Route.ComponentProp
                   <Button
                     type="button"
                     variant="outline"
-                    className="flex-1 rounded-2xl border-[#595958] md:flex-initial"
+                    className="yc-btn-secondary flex-1 md:flex-initial"
                   >
                     <DownloadIcon className="mr-2 h-5 w-5" />
                     <Trans>Download</Trans>
@@ -267,7 +267,7 @@ export default function CompletedSigningPage({ loaderData }: Route.ComponentProp
             )}
 
             {user && (
-              <Button asChild className="rounded-2xl">
+              <Button asChild className="yc-btn-primary">
                 <Link to={returnToHomePath}>
                   <Trans>Go Back Home</Trans>
                 </Link>

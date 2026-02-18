@@ -75,11 +75,16 @@ export const SignFieldNameDialog = createCallable<SignFieldNameDialogProps, stri
                 />
 
                 <DialogFooter>
-                  <Button type="button" variant="secondary" onClick={() => call.end(null)}>
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    className="yc-btn-secondary"
+                    onClick={() => call.end(null)}
+                  >
                     <Trans>Cancel</Trans>
                   </Button>
 
-                  <Button type="submit">
+                  <Button type="submit" className="yc-btn-primary">
                     <Trans>Enter</Trans>
                   </Button>
                 </DialogFooter>

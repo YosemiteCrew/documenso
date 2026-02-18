@@ -292,4 +292,179 @@
     background-color: #ffffff;
     color: #302f2e;
   }
+
+  /* Yosemite button system for embed/signing screens */
+  .yc-btn-primary {
+    border-radius: var(--yc-radius-lg) !important;
+    border: 1px solid #302f2e !important;
+    background: #302f2e !important;
+    color: #ffffff !important;
+    font-family: var(--font-sans) !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 1.25 !important;
+  }
+
+  .yc-btn-primary:hover {
+    background: #1d1c1b !important;
+    border-color: #1d1c1b !important;
+    color: #ffffff !important;
+  }
+
+  .yc-btn-secondary {
+    border-radius: var(--yc-radius-lg) !important;
+    border: 1px solid #302f2e !important;
+    background: #ffffff !important;
+    color: #302f2e !important;
+    font-family: var(--font-sans) !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 1.25 !important;
+  }
+
+  .yc-btn-secondary:hover {
+    border-color: #247aed !important;
+    color: #247aed !important;
+    background: #ffffff !important;
+  }
+
+
+  .yc-btn-primary,
+  .yc-btn-primary span,
+  .yc-btn-primary p,
+  .yc-btn-primary svg {
+    color: #ffffff !important;
+  }
+
+  .yc-btn-secondary,
+  .yc-btn-secondary span,
+  .yc-btn-secondary p,
+  .yc-btn-secondary svg {
+    color: #302f2e !important;
+  }
+
+  .yc-btn-secondary:hover,
+  .yc-btn-secondary:hover span,
+  .yc-btn-secondary:hover p,
+  .yc-btn-secondary:hover svg {
+    color: #247aed !important;
+  }
 }
+
+
+  /* Inventory-table style parity for Documenso list in embed mode */
+  .yc-doc-table > .rounded-md.border {
+    border: 1px solid #eaeaea !important;
+    border-radius: var(--yc-radius-lg) !important;
+    background: #ffffff !important;
+    padding: 16px !important;
+  }
+
+  .yc-doc-table table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  .yc-doc-table thead tr th,
+  .yc-doc-table tbody tr td {
+    padding: 6px 11px !important;
+    vertical-align: middle;
+    border-bottom: 1px solid #eaeaea;
+  }
+
+  .yc-doc-table thead tr th {
+    color: #747473 !important;
+    font-family: var(--font-sans) !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 150% !important;
+    letter-spacing: -0.24px;
+  }
+
+  .yc-doc-table tbody tr:last-child td {
+    border-bottom: none !important;
+  }
+
+  .yc-doc-table tbody tr td,
+  .yc-doc-table tbody tr td p,
+  .yc-doc-table tbody tr td a,
+  .yc-doc-table tbody tr td span {
+    color: #302f2e;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: -0.32px;
+  }
+
+  .yc-doc-table .yc-btn-primary,
+  .yc-doc-table .yc-btn-secondary {
+    border-radius: var(--yc-radius-lg) !important;
+  }
+
+  html.yc-embed .rounded-2xl,
+  html.yc-embed .rounded-xl {
+    border-radius: var(--yc-radius-lg) !important;
+  }
+
+  html.yc-embed .rounded-lg,
+  html.yc-embed .rounded-md,
+  html.yc-embed .rounded,
+  html.yc-embed .rounded-sm {
+    border-radius: var(--yc-radius-sm) !important;
+  }
+
+
+  .yc-doc-table thead tr th,
+  .yc-doc-table thead tr th * {
+    font-family: var(--font-sans) !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 150% !important;
+    letter-spacing: -0.24px !important;
+    color: #747473 !important;
+  }
+
+  .yc-doc-table tbody tr td,
+  .yc-doc-table tbody tr td *,
+  .yc-doc-table tbody tr td .text-sm,
+  .yc-doc-table tbody tr td .font-medium,
+  .yc-doc-table tbody tr td .text-muted-foreground {
+    font-family: var(--font-sans) !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    line-height: 150% !important;
+    letter-spacing: -0.32px !important;
+    color: #302f2e !important;
+  }
+
+
+  /* Inventory-like spacing scale for table + controls */
+  .yc-doc-table > .rounded-md.border {
+    padding: 16px !important;
+  }
+
+  .yc-doc-table thead tr th,
+  .yc-doc-table tbody tr td {
+    padding: 6px 11px !important;
+  }
+
+  .yc-doc-table [role='status'],
+  .yc-doc-table .badge,
+  .yc-doc-table .rounded-full.border,
+  .yc-doc-table .rounded-full.bg-muted {
+    padding: 8px 16px !important;
+    border-radius: var(--yc-radius-lg) !important;
+  }
+
+  .yc-btn-primary,
+  .yc-btn-secondary {
+    padding: 12px 32px !important;
+    min-height: 40px !important;
+  }
+
+  .yc-doc-table .yc-btn-primary,
+  .yc-doc-table .yc-btn-secondary {
+    padding: 12px 16px !important;
+    min-height: 40px !important;
+  }

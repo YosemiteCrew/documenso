@@ -134,7 +134,11 @@ export const DocumentSigningPageViewV2 = () => {
                 envelopeId={envelope.id}
                 token={recipient.token}
                 trigger={
-                  <Button variant="ghost" size="sm" className="w-full justify-start">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="yc-btn-secondary w-full justify-start"
+                  >
                     <PaperclipIcon className="mr-2 h-4 w-4" />
                     <Trans>Attachments</Trans>
                   </Button>
@@ -147,7 +151,11 @@ export const DocumentSigningPageViewV2 = () => {
                 envelopeItems={envelope.envelopeItems}
                 token={recipient.token}
                 trigger={
-                  <Button variant="ghost" size="sm" className="w-full justify-start">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="yc-btn-secondary w-full justify-start"
+                  >
                     <DownloadCloudIcon className="mr-2 h-4 w-4" />
                     <Trans>Download PDF</Trans>
                   </Button>
@@ -173,7 +181,7 @@ export const DocumentSigningPageViewV2 = () => {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="w-full justify-start hover:text-destructive"
+                      className="yc-btn-secondary w-full justify-start hover:text-destructive"
                     >
                       <BanIcon className="mr-2 h-4 w-4" />
                       <Trans>Reject Document</Trans>
@@ -188,7 +196,7 @@ export const DocumentSigningPageViewV2 = () => {
             {/* Footer of left sidebar. */}
             {!isEmbed && (
               <div className="px-4">
-                <Button asChild variant="ghost" className="w-full justify-start">
+                <Button asChild variant="ghost" className="yc-btn-secondary w-full justify-start">
                   <Link to="/">
                     <ArrowLeftIcon className="mr-2 h-4 w-4" />
                     <Trans>Return</Trans>

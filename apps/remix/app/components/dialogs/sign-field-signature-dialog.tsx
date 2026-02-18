@@ -60,7 +60,12 @@ export const SignFieldSignatureDialog = createCallable<
           <DocumentSigningDisclosure />
 
           <DialogFooter>
-            <Button type="button" variant="secondary" onClick={() => call.end(null)}>
+            <Button
+              type="button"
+              variant="secondary"
+              className="yc-btn-secondary"
+              onClick={() => call.end(null)}
+            >
               <Trans>Cancel</Trans>
             </Button>
 

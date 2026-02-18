@@ -53,7 +53,7 @@ export const DocumentsTableActionButton = ({
 
     if (recipient && isPending && !isSigned) {
       return (
-        <Button className="w-32" asChild>
+        <Button className="yc-btn-primary w-32" asChild>
           <Link to={`/sign/${recipient?.token}`}>
             {match(role)
               .with(RecipientRole.SIGNER, () => (
@@ -81,7 +81,7 @@ export const DocumentsTableActionButton = ({
 
     if (recipient && (isComplete || isSigned)) {
       return (
-        <Button className="w-32" asChild>
+        <Button className="yc-btn-primary w-32" asChild>
           <Link to={`/sign/${recipient?.token}`}>
             <EyeIcon className="-ml-1 mr-2 h-4 w-4" />
             <Trans>View</Trans>
@@ -106,7 +106,7 @@ export const DocumentsTableActionButton = ({
     .with(
       isOwner ? { isDraft: true, isOwner: true } : { isDraft: true, isCurrentTeamDocument: true },
       () => (
-        <Button className="w-32" asChild>
+        <Button className="yc-btn-primary w-32" asChild>
           <Link to={formatPath}>
             <Edit className="-ml-1 mr-2 h-4 w-4" />
             <Trans>Edit</Trans>
@@ -115,7 +115,7 @@ export const DocumentsTableActionButton = ({
       ),
     )
     .with({ isRecipient: true, isPending: true, isSigned: false }, () => (
-      <Button className="w-32" asChild>
+      <Button className="yc-btn-primary w-32" asChild>
         <Link to={`/sign/${recipient?.token}`}>
           {match(role)
             .with(RecipientRole.SIGNER, () => (
@@ -140,7 +140,7 @@ export const DocumentsTableActionButton = ({
       </Button>
     ))
     .with({ isPending: true, isSigned: true }, () => (
-      <Button className="w-32" disabled={true}>
+      <Button className="yc-btn-primary w-32" disabled={true}>
         <EyeIcon className="-ml-1 mr-2 h-4 w-4" />
         <Trans>View</Trans>
       </Button>
@@ -151,7 +151,7 @@ export const DocumentsTableActionButton = ({
         envelopeStatus={row.status}
         token={recipient?.token}
         trigger={
-          <Button className="w-32">
+          <Button className="yc-btn-secondary w-32" variant="outline">
             <Download className="-ml-1 mr-2 inline h-4 w-4" />
             <Trans>Download</Trans>
           </Button>

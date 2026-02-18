@@ -116,7 +116,7 @@ export const DocumentsTable = ({
   };
 
   return (
-    <div className="relative">
+    <div className="yc-doc-table relative">
       <DataTable
         columns={columns}
         data={results.data}
