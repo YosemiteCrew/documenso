@@ -306,14 +306,13 @@
   }
 
   .yc-btn-primary {
-    transition: transform 300ms ease-in-out !important;
+    transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out !important;
   }
 
   .yc-btn-primary:hover {
-    background: #302f2e !important;
-    border-color: #302f2e !important;
+    background: #1d1c1b !important;
+    border-color: #1d1c1b !important;
     color: #ffffff !important;
-    transform: scale(1.05);
   }
 
   .yc-btn-secondary {
@@ -396,8 +395,8 @@
 }
 
 /* Apply inventory value typography to content cells, but not button labels */
-.yc-doc-table tbody tr td > :not(.yc-btn-primary):not(.yc-btn-secondary),
-.yc-doc-table tbody tr td > :not(.yc-btn-primary):not(.yc-btn-secondary) * {
+.yc-doc-table tbody tr td > :not(button):not(a):not(.yc-btn-primary):not(.yc-btn-secondary),
+.yc-doc-table tbody tr td > :not(button):not(a):not(.yc-btn-primary):not(.yc-btn-secondary) * {
   font-family: var(--font-sans) !important;
   font-size: 16px !important;
   font-weight: 400 !important;
@@ -444,17 +443,6 @@
   padding: 12px 16px !important;
 }
 
-html.yc-embed .rounded-2xl,
-html.yc-embed .rounded-xl {
-  border-radius: var(--yc-radius-lg) !important;
-}
-
-html.yc-embed .rounded-lg,
-html.yc-embed .rounded-md,
-html.yc-embed .rounded,
-html.yc-embed .rounded-sm {
-  border-radius: var(--yc-radius-sm) !important;
-}
 
 /* Bottom breathing space for embedded sign/doc pages */
 .yc-sign-shell {
@@ -462,18 +450,41 @@ html.yc-embed .rounded-sm {
 }
 
 
+
 /* Documents toolbar radius alignment (sender, status, time, search) */
-.yc-doc-toolbar [role='tablist'] {
-  border-radius: var(--yc-radius-lg) !important;
-}
-
-.yc-doc-toolbar [role='tab'] {
-  border-radius: var(--yc-radius-lg) !important;
-}
-
+.yc-doc-toolbar [role='tablist'],
+.yc-doc-toolbar [role='tab'],
 .yc-doc-toolbar [role='combobox'],
+.yc-doc-toolbar [data-slot='select-trigger'],
 .yc-doc-toolbar input[type='search'],
-.yc-doc-toolbar .border-input,
-.yc-doc-toolbar button {
+.yc-doc-toolbar .border-input {
   border-radius: var(--yc-radius-lg) !important;
+}
+
+/* Sender clear chip / internal mini controls */
+.yc-doc-toolbar [role='combobox'] button,
+.yc-doc-toolbar [role='combobox'] [class*='rounded'] {
+  border-radius: var(--yc-radius-lg) !important;
+}
+
+
+/* Signing sender/email should not be clipped by truncate overflow */
+.yc-sign-shell .yc-signer-email {
+  overflow: visible !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+/* Keep default truncate behavior elsewhere, but prevent clipping in signing shell */
+.yc-sign-shell .truncate {
+  overflow: visible !important;
+}
+
+
+/* Custom position override for specific signing signature holder */
+.yc-sign-shell div.absolute:has(> #field-16[data-field-type='SIGNATURE']) {
+  top: 125% !important;
+  left: 70% !important;
+  height: 117.3px !important;
+  width: 166px !important;
 }
