@@ -192,14 +192,14 @@ export const DocumentSigningPageViewV1 = ({
                 .with(RecipientRole.VIEWER, () =>
                   includeSenderDetails ? (
                     <Trans>
-                      <span className="truncate" title={senderName}>
+                      <span className="yc-signer-email" title={senderName}>
                         {senderName} {senderEmail}
                       </span>{' '}
                       on behalf of "{document.team?.name}" has invited you to view this document
                     </Trans>
                   ) : (
                     <Trans>
-                      <span className="truncate" title={senderName}>
+                      <span className="yc-signer-email" title={senderName}>
                         {senderName} {senderEmail}
                       </span>{' '}
                       has invited you to view this document
@@ -209,14 +209,14 @@ export const DocumentSigningPageViewV1 = ({
                 .with(RecipientRole.SIGNER, () =>
                   includeSenderDetails ? (
                     <Trans>
-                      <span className="truncate" title={senderName}>
+                      <span className="yc-signer-email" title={senderName}>
                         {senderName} {senderEmail}
                       </span>{' '}
                       on behalf of "{document.team?.name}" has invited you to sign this document
                     </Trans>
                   ) : (
                     <Trans>
-                      <span className="truncate" title={senderName}>
+                      <span className="yc-signer-email" title={senderName}>
                         {senderName} {senderEmail}
                       </span>{' '}
                       has invited you to sign this document
@@ -226,14 +226,14 @@ export const DocumentSigningPageViewV1 = ({
                 .with(RecipientRole.APPROVER, () =>
                   includeSenderDetails ? (
                     <Trans>
-                      <span className="truncate" title={senderName}>
+                      <span className="yc-signer-email" title={senderName}>
                         {senderName} {senderEmail}
                       </span>{' '}
                       on behalf of "{document.team?.name}" has invited you to approve this document
                     </Trans>
                   ) : (
                     <Trans>
-                      <span className="truncate" title={senderName}>
+                      <span className="yc-signer-email" title={senderName}>
                         {senderName} {senderEmail}
                       </span>{' '}
                       has invited you to approve this document
@@ -243,14 +243,14 @@ export const DocumentSigningPageViewV1 = ({
                 .with(RecipientRole.ASSISTANT, () =>
                   includeSenderDetails ? (
                     <Trans>
-                      <span className="truncate" title={senderName}>
+                      <span className="yc-signer-email" title={senderName}>
                         {senderName} {senderEmail}
                       </span>{' '}
                       on behalf of "{document.team?.name}" has invited you to assist this document
                     </Trans>
                   ) : (
                     <Trans>
-                      <span className="truncate" title={senderName}>
+                      <span className="yc-signer-email" title={senderName}>
                         {senderName} {senderEmail}
                       </span>{' '}
                       has invited you to assist this document
