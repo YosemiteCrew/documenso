@@ -32,9 +32,12 @@ export function FieldContainerPortal({
   const maxWidth = $pageBounds?.width ? $pageBounds.width - coords.x : undefined;
 
   const isCheckboxOrRadioField = field.type === 'CHECKBOX' || field.type === 'RADIO';
+  const isSignatureField = field.type === 'SIGNATURE' || field.type === 'FREE_SIGNATURE';
 
   const style = useMemo(() => {
     const portalBounds = alternativePortalRoot?.getBoundingClientRect();
+
+    const signatureWidth = isSignatureField ? Math.max(coords.width, 100) : coords.width;
 
     const bounds = {
       top: `${coords.y}px`,
@@ -42,7 +45,7 @@ export function FieldContainerPortal({
       ...(!isCheckboxOrRadioField
         ? {
             height: `${coords.height}px`,
-            width: `${coords.width}px`,
+            width: `${signatureWidth}px`,
           }
         : {
             maxWidth: `${maxWidth}px`,
@@ -55,7 +58,7 @@ export function FieldContainerPortal({
     }
 
     return bounds;
-  }, [coords, maxWidth, isCheckboxOrRadioField]);
+  }, [coords, maxWidth, isCheckboxOrRadioField, isSignatureField]);
 
   return createPortal(
     <div className={cn('absolute', className)} style={style}>

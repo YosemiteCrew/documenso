@@ -197,7 +197,7 @@
   html.yc-embed,
   html.yc-embed body {
     background-color: #ffffff !important;
-    }
+  }
 
   html.yc-embed {
     --background: 0 0% 100%;
@@ -233,7 +233,6 @@
 
   /* Force non-button white text to the app's dark text color in embed mode */
   html.yc-embed .text-white {
-    color: #302f2e !important;
   }
 
   html.yc-embed button .text-white,
@@ -301,7 +300,9 @@
   }
 
   .yc-btn-primary {
-    transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out !important;
+    transition:
+      background-color 300ms ease-in-out,
+      border-color 300ms ease-in-out !important;
   }
 
   .yc-btn-primary:hover {
@@ -327,7 +328,6 @@
     background: #ffffff !important;
   }
 
-
   .yc-btn-primary,
   .yc-btn-primary span,
   .yc-btn-primary p,
@@ -349,7 +349,6 @@
     color: #247aed !important;
   }
 }
-
 
 /* Inventory-table style parity for Documenso list in embed mode */
 .yc-doc-table {
@@ -397,7 +396,6 @@
   font-weight: 400 !important;
   line-height: 150% !important;
   letter-spacing: -0.32px !important;
-  color: #302f2e !important;
 }
 
 .yc-doc-table .yc-btn-primary,
@@ -438,13 +436,10 @@
   padding: 12px 16px !important;
 }
 
-
 /* Bottom breathing space for embedded sign/doc pages */
 .yc-sign-shell {
   padding-bottom: 12px;
 }
-
-
 
 /* Documents toolbar radius alignment (sender, status, time, search) */
 .yc-doc-toolbar [role='tablist'],
@@ -462,7 +457,6 @@
   border-radius: var(--yc-radius-lg) !important;
 }
 
-
 /* Signing sender/email should not be clipped by truncate overflow */
 .yc-sign-shell .yc-signer-email {
   overflow: visible !important;
@@ -475,11 +469,18 @@
   overflow: visible !important;
 }
 
-
-/* Custom position override for specific signing signature holder */
-.yc-sign-shell div.absolute:has(> #field-16[data-field-type='SIGNATURE']) {
+/* Custom position override for signing signature holder in local test docs */
+html.yc-embed .yc-sign-shell div.absolute:has(> #field-12[data-field-type='SIGNATURE']),
+html.yc-embed .yc-sign-shell div.absolute:has(> #field-16[data-field-type='SIGNATURE']) {
   top: 125% !important;
   left: 70% !important;
   height: 117.3px !important;
-  width: 166px !important;
+  width: 190px !important;
+}
+
+
+/* Ensure signature placeholder has usable width in signing flow */
+html.yc-embed .yc-sign-shell div.absolute:has(> [data-field-type='SIGNATURE']) {
+  width: 100px !important;
+  min-width: 100px !important;
 }

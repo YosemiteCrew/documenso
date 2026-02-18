@@ -5,7 +5,6 @@ import { CheckCircle2, Clock8, DownloadIcon, Loader2 } from 'lucide-react';
 import { Link } from 'react-router';
 import { match } from 'ts-pattern';
 
-import signingCelebration from '@documenso/assets/images/signing-celebration.png';
 import { getOptionalSession } from '@documenso/auth/server/lib/utils/get-session';
 import { useOptionalSession } from '@documenso/lib/client-only/providers/session';
 import { getDocumentAndSenderByToken } from '@documenso/lib/server-only/document/get-document-by-token';
@@ -168,11 +167,28 @@ export default function CompletedSigningPage({ loaderData }: Route.ComponentProp
           </Badge>
 
           {/* Card with recipient */}
-          <SigningCard3D
-            name={recipientName}
-            signature={signatures.at(0)}
-            signingCelebrationImage={signingCelebration}
-          />
+          <div className="relative isolate">
+            <div
+              className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[360px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-200/55 blur-3xl"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[320px] w-[520px] -translate-x-1/2 -translate-y-1/2 opacity-80"
+              style={{
+                backgroundImage:
+                  'radial-gradient(circle at 1px 1px, rgba(37, 99, 235, 0.35) 1px, transparent 0)',
+                backgroundSize: '14px 14px',
+                mask: 'radial-gradient(rgba(255, 255, 255, 1) 0%, transparent 72%)',
+                WebkitMask: 'radial-gradient(rgba(255, 255, 255, 1) 0%, transparent 72%)',
+              }}
+              aria-hidden
+            />
+            <SigningCard3D
+              className="relative z-10"
+              name={recipientName}
+              signature={signatures.at(0)}
+            />
+          </div>
 
           <h2 className="mt-6 max-w-[35ch] text-center text-2xl font-semibold leading-normal md:text-3xl lg:text-4xl">
             {recipient.role === RecipientRole.SIGNER && <Trans>Document Signed</Trans>}
