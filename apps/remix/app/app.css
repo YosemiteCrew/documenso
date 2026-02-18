@@ -197,8 +197,7 @@
   html.yc-embed,
   html.yc-embed body {
     background-color: #ffffff !important;
-    color: #302f2e !important;
-  }
+    }
 
   html.yc-embed {
     --background: 0 0% 100%;
@@ -215,10 +214,6 @@
   html.yc-embed body {
     background-color: #ffffff;
     color: #302f2e;
-  }
-
-  html.yc-embed .border-border {
-    border-color: #595958 !important;
   }
 
   html.yc-embed .bg-background {
