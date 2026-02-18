@@ -33,6 +33,16 @@ setInterval(() => {
 const PMS_WEBHOOK_URL = process.env.DOCUMENSO_PMS_WEBHOOK_URL ?? '';
 const PMS_WEBHOOK_SECRET = process.env.DOCUMENSO_PMS_WEBHOOK_SECRET ?? '';
 
+const getPmsWebhookUrls = () => {
+  if (!PMS_WEBHOOK_URL) {
+    return [];
+  }
+
+  return PMS_WEBHOOK_URL.split(',')
+    .map((url) => url.trim())
+    .filter((url) => url.length > 0);
+};
+
 const sendApiTokenToPms = async ({
   businessId,
   apiToken,
@@ -40,7 +50,14 @@ const sendApiTokenToPms = async ({
   businessId: string;
   apiToken: string;
 }) => {
-  if (!PMS_WEBHOOK_URL || !PMS_WEBHOOK_SECRET) {
+  if (!PMS_WEBHOOK_SECRET) {
+    console.warn('PMS webhook not configured, skipping API key sync');
+    return;
+  }
+
+  const webhookUrls = getPmsWebhookUrls();
+
+  if (webhookUrls.length === 0) {
     console.warn('PMS webhook not configured, skipping API key sync');
     return;
   }
@@ -52,28 +69,34 @@ const sendApiTokenToPms = async ({
 
   const signature = crypto.createHmac('sha256', PMS_WEBHOOK_SECRET).update(payload).digest('hex');
 
-  try {
-    const webhookUrl = `${PMS_WEBHOOK_URL}/v1/documenso/pms/store-api-key/${businessId}`;
-    const response = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-documenso-signature': signature,
-      },
-      body: payload,
-    });
-
-    if (!response.ok) {
-      console.warn('PMS webhook failed', {
-        status: response.status,
-        businessId,
+  for (const baseUrl of webhookUrls) {
+    try {
+      const webhookUrl = `${baseUrl}/v1/documenso/pms/store-api-key/${businessId}`;
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-documenso-signature': signature,
+        },
+        body: payload,
       });
-      return;
-    }
 
-    console.info('PMS webhook delivered', { businessId });
-  } catch (error) {
-    console.error('Failed to send Documenso API token to PMS:', error);
+      if (!response.ok) {
+        console.warn('PMS webhook failed', {
+          status: response.status,
+          businessId,
+          webhookUrl,
+        });
+        continue;
+      }
+
+      console.info('PMS webhook delivered', { businessId, webhookUrl });
+    } catch (error) {
+      console.error('Failed to send Documenso API token to PMS:', {
+        error,
+        webhookUrl: baseUrl,
+      });
+    }
   }
 };
 
